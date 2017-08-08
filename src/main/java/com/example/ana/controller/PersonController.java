@@ -3,6 +3,8 @@ package com.example.ana.controller;
 import com.example.ana.domain.Person;
 import com.example.ana.service.PersonService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -27,6 +29,7 @@ public class PersonController {
 
     @GetMapping("/person")
     String getPerson(Model model) {
+        showPrinciple();
         return "new_person";
     }
 
@@ -62,5 +65,14 @@ public class PersonController {
         return "administration";
     }
 
-
+    private void showPrinciple() {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        System.out.println("\n\n\n ===========>");
+        System.out.println("name " + authentication.getName());
+        System.out.println("details " + authentication.getDetails());
+        System.out.println("authorties " + authentication.getAuthorities());
+        System.out.println("credentials " + authentication.getCredentials());
+        System.out.println("principal " + authentication.getPrincipal() s);
+        System.out.println("is authenticated " + authentication.isAuthenticated());
+    }
 }

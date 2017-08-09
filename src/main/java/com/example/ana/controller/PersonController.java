@@ -72,7 +72,7 @@ public class PersonController {
         System.out.println("details " + authentication.getDetails());
         System.out.println("authorties " + authentication.getAuthorities());
         System.out.println("credentials " + authentication.getCredentials());
-        System.out.println("principal " + authentication.getPrincipal() s);
+        System.out.println("principal " + authentication.getPrincipal());
         System.out.println("is authenticated " + authentication.isAuthenticated());
     }
 }
